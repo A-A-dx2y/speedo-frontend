@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+/* Enable class-based dark mode for Tailwind v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  
+  .dark {
+    color-scheme: dark;
+  }
+}
+
+/* Fix for browser autofill background color - Theme Aware */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.dark input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #151515 inset !important;
+    -webkit-text-fill-color: white !important;
+}
+
+:root:not(.dark) input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 30px #f9fafb inset !important;
+    -webkit-text-fill-color: black !important;
+}
