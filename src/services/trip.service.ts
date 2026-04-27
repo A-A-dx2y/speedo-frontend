@@ -30,5 +30,10 @@ export const tripService = {
   getTripById: async (id: string): Promise<ApiResponse<TripDetailResponse>> => {
     const response = await api.get<ApiResponse<TripDetailResponse>>(`/trip/${id}`);
     return response.data;
+  },
+
+  deleteTrip: async (id: string): Promise<ApiResponse<null>> => {
+    const response = await api.delete<ApiResponse<null>>(`/trip/${id}`);
+    return response.data;
   }
 };
