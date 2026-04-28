@@ -5,13 +5,16 @@ import SignupPage from '../pages/auth/SignupPage.js';
 import DashboardPage from '../pages/DashboardPage.js';
 import MapPage from '../pages/MapPage.js';
 import ProtectedRoute from '../components/auth/ProtectedRoute.js';
+import PublicRoute from '../components/auth/PublicRoute.js';
 
 const AppRoutes: React.FC = () => {
   return (
     <Routes>
       {/* Public Routes */}
-      <Route path="/login" element={<LoginPage />} />
-      <Route path="/signup" element={<SignupPage />} />
+      <Route element={<PublicRoute />}>
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+      </Route>
 
       {/* Protected Routes */}
       <Route element={<ProtectedRoute />}>
