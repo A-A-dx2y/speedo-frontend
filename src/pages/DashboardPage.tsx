@@ -276,7 +276,7 @@ const DashboardPage: React.FC = () => {
                     
                     <div className="flex items-center gap-6 pr-2 text-slate-400 dark:text-slate-500">
                       <button 
-                        className="hover:text-red-500 dark:hover:text-red-400 transition-colors opacity-0 group-hover:opacity-100 cursor-pointer" 
+                        className="hover:text-red-500 dark:hover:text-red-400 transition-colors opacity-100 sm:opacity-0 sm:group-hover:opacity-100 cursor-pointer" 
                         onClick={(e) => { 
                           e.stopPropagation(); 
                           setTripToDelete(trip);
@@ -285,7 +285,7 @@ const DashboardPage: React.FC = () => {
                       >
                         <Trash2 size={16} strokeWidth={2.5} />
                       </button>
-                      <div className="text-blue-500 dark:text-blue-400 opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all">
+                      <div className="text-blue-500 dark:text-blue-400 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transform sm:translate-x-2 sm:group-hover:translate-x-0 transition-all">
                         <ChevronRight size={18} strokeWidth={3} />
                       </div>
                     </div>
