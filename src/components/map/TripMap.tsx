@@ -77,7 +77,7 @@ const TripMap: React.FC<TripMapProps> = ({
         </div>
       </div>
 
-      <MapContainer center={trips[0]?.startPoint || [0,0]} zoom={13} className="w-full h-full" zoomControl={true}>
+      <MapContainer center={trips[0]?.startPoint || [0,0]} zoom={13} className="w-full h-full" zoomControl={true} attributionControl={false}>
         <TileLayer
           attribution={activeStyle === 'satellite' 
             ? 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
