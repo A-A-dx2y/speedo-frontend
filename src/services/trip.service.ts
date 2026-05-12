@@ -1,5 +1,6 @@
 import api from '../lib/axios.js';
 import type { TripResponse, TripDetailResponse } from '../types/trip.types.js';
+import { TRIP_ENDPOINTS } from '../constants/api/trip.js';
 
 // Generic wrapper matching your backend's sendResponse utility
 interface ApiResponse<T> {
@@ -14,7 +15,7 @@ export const tripService = {
     const formData = new FormData();
     formData.append('file', file);
     
-    const response = await api.post<ApiResponse<TripResponse>>('/trip/upload', formData, {
+    const response = await api.post<ApiResponse<TripResponse>>(TRIP_ENDPOINTS.UPLOAD, formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
@@ -23,17 +24,18 @@ export const tripService = {
   },
 
   getAllTrips: async (): Promise<ApiResponse<TripResponse[]>> => {
-    const response = await api.get<ApiResponse<TripResponse[]>>('/trip');
+    const response = await api.get<ApiResponse<TripResponse[]>>(TRIP_ENDPOINTS.BASE);
     return response.data;
   },
 
   getTripById: async (id: string): Promise<ApiResponse<TripDetailResponse>> => {
-    const response = await api.get<ApiResponse<TripDetailResponse>>(`/trip/${id}`);
+    const response = await api.get<ApiResponse<TripDetailResponse>>(`${TRIP_ENDPOINTS.BASE}/${id}`);
     return response.data;
   },
 
   deleteTrip: async (id: string): Promise<ApiResponse<null>> => {
-    const response = await api.delete<ApiResponse<null>>(`/trip/${id}`);
+    const response = await api.delete<ApiResponse<null>>(`${TRIP_ENDPOINTS.BASE}/${id}`);
     return response.data;
   }
 };
+

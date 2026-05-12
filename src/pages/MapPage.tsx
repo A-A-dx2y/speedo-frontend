@@ -16,7 +16,7 @@ import TripSummary from '../components/map/TripSummary';
 // Utilities
 import { formatDuration, processGpsData } from '../utils/mapHelpers';
 
-// Fix Leaflet marker icons issue in React/Vite
+
 delete (L.Icon.Default.prototype as any)._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
@@ -37,7 +37,6 @@ const MapPage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const pointsPerPage = 10;
 
-  // Initial load
   useEffect(() => {
     const init = async () => {
       if (!id) return;
@@ -70,7 +69,6 @@ const MapPage: React.FC = () => {
     const newSelected = new Set(selectedIds);
     
     if (newSelected.has(tripId)) {
-      // Don't deselect the last trip
       if (newSelected.size > 1) {
         newSelected.delete(tripId);
         if (activeId === tripId) {
@@ -79,7 +77,6 @@ const MapPage: React.FC = () => {
       }
     } else {
       newSelected.add(tripId);
-      // Fetch data if not loaded
       if (!loadedTrips.has(tripId)) {
         try {
           const res = await tripService.getTripById(tripId);
